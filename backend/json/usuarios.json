@@ -1,0 +1,33 @@
+{
+"id": "1",
+"usuario": "goku",
+"password": "asd.456",
+"nombre": "Son Goku",
+"seguidores": [
+{ "id": "5", "usuario": "krillin" },
+{ "id": "6", "usuario": "bulma" },
+{ "id": "7", "usuario": "vegeta" }
+],
+"siguiendo": [
+{ "id": "8", "usuario": "dende" },
+{ "id": "9", "usuario": "gohan" },
+{ "id": "10", "usuario": "goten" }
+]
+}
+
+{
+    "id": "2",
+    "usuario": "vegeta",
+    "password": "asd.456",
+    "nombre": "Son Vegeta",
+    "seguidores": [
+        { "id": "7", "usuario": "vegeta" },
+        { "id": "8", "usuario": "dende" },
+        { "id": "9", "usuario": "gohan" },
+        { "id": "10", "usuario": "goten" }
+    ],
+    "siguiendo": [
+    { "id": "5", "usuario": "krillin" },
+    { "id": "6", "usuario": "bulma" }
+    ]
+}

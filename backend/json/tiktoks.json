@@ -1,0 +1,35 @@
+{
+"id" : "1",
+"titulo" : "¡Ya basta freezer!",
+"fecha" : "12/12/2012",
+"video" : "videos/1.mp4",
+"tituloCancion" : "Cha la head cha la!",
+"likes" : 10,
+"shares" : 15,
+"comentarios" : [
+{ "id": "3", "usuario": "krilin", "comentario": "Gokuuuuuuuuu!!!!!" },
+{ "id": "2", "usuario": "vegeta", "comentario": "Insecto!!!!!" }
+],
+"hashtags": [
+{ "id": "1", "hashtag": "Dogs" },
+{ "id": "2", "hashtag": "Freezer" },
+{ "id": "3", "hashtag": "DragonBall" }
+]
+}
+
+{
+    "id" : "2",
+    "titulo" : "¡Tu puedes Tommy!",
+    "fecha" : "12/12/2012",
+    "video" : "videos/4.mp4",
+    "tituloCancion" : "wuaf wuaf!",
+    "likes" : 1000,
+    "shares" : 150,
+    "comentarios" : [
+    { "id": "1", "usuario": "goku", "comentario": "Guapoooooo!!!!!" },
+    { "id": "2", "usuario": "vegeta", "comentario": "Precioso!!!!!" }
+    ],
+    "hashtags": [
+    { "id": "1", "hashtag": "Dogs" }
+    ]
+    }

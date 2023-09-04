@@ -1,0 +1,83 @@
+(coleccion usuarios)
+(coleccion tiktoks)
+(coleccion hashtags)
+
+(coleccion usuarios) post login que retorne el detalle del usuarios
+(coleccion tiktoks) put agregar tiktok (likes, shares en 0 y comentarios y hashtags arreglos vacios)
+(coleccion tiktoks) get todos los tiktoks
+(coleccion tiktoks) get tiktoks de usuarios seguidos (cruce de usuarios con tiktoks)
+(coleccion tiktoks) get comentarios del tiktok
+(coleccion tiktoks) put nuevo comentario
+(coleccion hashtags) get todos los hashtags
+(coleccion hashtags) get tiktok segun el hashtag (cruce )
+(coleccion hashtags) put agregar hashtag (se agrega uno con videos en 0)
+Funcionalidad de seguir un usuario
+
+
+db.usuarios.agreggate(  //Coleccion donde vamos a tener la informacion del cruce
+[   
+      {
+        $lookup: {
+          from: 'tiktoks',  //Coleccion de donde sacaremos la informacion
+          localField: 'siguiendo.id', //Dato de la coleccion usuarios
+          foreignField: 'idUsuario', //Dato de la coleccion tiktoks
+          as: 'detallesTiktoks', //Alias
+        },
+      },
+        {
+            $match: {
+            _id: new mongoose.Types.ObjectId("64df08a72e9c0739269e0494"),
+            },
+        },
+        {
+            $project: {
+            detallesTiktoks: true,
+            },
+        },
+]
+)
+
+db.preguntas.agreggate(  //Coleccion donde vamos a tener la informacion del cruce
+[   
+      {
+        $lookup: {
+          from: 'usuarios',  
+          localField: 'idUsuario', 
+          foreignField: 'id',
+          as: 'detallePreguntasConUsuario', //Alias
+        },
+      },
+        {
+            $project: {
+            detallePreguntasConUsuario.nombre: true,
+            detallePreguntasConUsuario.urlImage: true
+            },
+        },
+]
+)
+
+db.preguntas.agreggate(  //Coleccion donde vamos a tener la informacion del cruce
+[   
+      {
+        $lookup: {
+          from: 'usuarios',  
+          localField: 'idUsuario', 
+          foreignField: 'id',
+          as: 'detallePreguntasConUsuario', //Alias
+        },
+      },
+        {
+            $match: {
+            _id: new mongoose.Types.ObjectId("64df08a72e9c0739269e0494"),
+            },
+        },
+        {
+            $project: {
+            tiktoksHashtags: true,
+            },
+        },
+]
+)
+
+
+Cada html tiene su propio controlador

@@ -1,0 +1,451 @@
+<!-- POR: ANGEL BULNES -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiktok</title>
+    <script
+      src="https://kit.fontawesome.com/cce0686119.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light nav">
+      <a class="navbar-brand" href="#">
+        <figure>
+          <img src="assets/images/tiktoklogo2.svg" alt="Tiktok icon" />
+          <img src="assets/images/tiktoklogo.svg" alt="Tiktok logo" />
+        </figure>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars color-main"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline ml-auto">
+          <i
+            class="fas fa-cloud-upload-alt fa-2x mr-3 mb-3 mb-md-0 btn-upload"
+            id="btn-upload"
+          ></i>
+          <span class="row">
+            <span class="col-lg-6 col-md-6">
+              <button
+                class="btn btn-main mb-3 mb-md-0"
+                type="button"
+                id="btn-login"
+              >
+                Login
+              </button>
+            </span>
+            <span class="col-lg-6 col-md-6">
+              <button class="btn btn-main mb-3 d-none" id="btn-logout" type="button">
+                Cerrar sesión
+              </button>
+            </span>
+            <span class="col-lg-12 col-md-6 d-md-none">
+              <button class="btn btn-main mb-3" id="btn-create" type="button">
+                Crear cuenta
+              </button>
+            </span>
+          </span>
+        </form>
+      </div>
+    </nav>
+    <main class="container-fluid main">
+      <div class="row">
+        <div class="col-lg-2 d-none d-lg-block">
+          <aside class="sidebar">
+            <ul>
+              <li class="side-link active">
+                <i class="fas fa-home fa-lg mr-4"></i> For You
+              </li>
+              <li class="side-link">
+                <i class="fas fa-user-friends fa-lg mr-4"></i>Following
+              </li>
+            </ul>
+            <p class="text-gray small mb-4">
+              Log in to follow creators, like videos and view comments
+            </p>
+            <button
+              class="btn btn-main-outline btn-block btn-side font-weight-bold"
+              id="btn-create-side"
+              type="button"
+            >
+              Crear cuenta
+            </button>
+          </aside>
+        </div>
+        <div class="col-lg-7 col-md-12">
+          <section class="tiktok-list" id="tiktok-list"></section>
+        </div>
+        <div class="col-lg-3 d-none d-lg-block">
+          <section class="side-content">
+            <div class="social-media">
+              <ul>
+                <li class="mr-4 bg-main rounded-circle btn-social">
+                  <i class="fas fa-link fa-lg"></i>
+                </li>
+                <li class="mr-4 rounded-circle bg-wha btn-social">
+                  <i class="fab fa-whatsapp fa-lg"></i>
+                </li>
+                <li class="mr-4 rounded-circle bg-facebook btn-social">
+                  <i class="fab fa-facebook-f fa-lg"></i>
+                </li>
+                <li class="mr-4 rounded-circle bg-twitter btn-social">
+                  <i class="fab fa-twitter fa-lg"></i>
+                </li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h4 class="mb-4">Suggested accounts</h4>
+              <ul id="suggested-list">
+                <li class="suggested-user">
+                  <figure>
+                    <img
+                      class="rounded-circle mr-2 user-img-md"
+                      src="assets/profile-pics/goku.jpg"
+                      alt="Profile pic"
+                    />
+                  </figure>
+                  <div class="user-info">
+                    <strong>Son Goku</strong>
+                    <p class="text-gray">@goku</p>
+                  </div>
+                  <button
+                    class="btn btn-main-outline btn-sm ml-auto side-button"
+                  >
+                    Follow
+                  </button>
+                </li>
+                <li class="suggested-user">
+                  <figure>
+                    <img
+                      class="rounded-circle mr-2 user-img-md"
+                      src="assets/profile-pics/goku.jpg"
+                      alt="Profile pic"
+                    />
+                  </figure>
+                  <div class="user-info">
+                    <strong>Son Goku</strong>
+                    <p class="text-gray">@goku</p>
+                  </div>
+                  <button
+                    class="btn btn-main-outline btn-sm ml-auto side-button"
+                  >
+                    Follow
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h4 class="mb-4">Discover</h4>
+              <ul id="hash-list"></ul>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div
+      class="modal fade"
+      id="loginModal"
+      tabindex="-1"
+      aria-labelledby="loginModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content p-5">
+          <div class="modal-body">
+            <h4
+              class="modal-title text-center font-weight-bold"
+              id="loginModalTitle"
+            >
+              Login
+            </h4>
+            <div class="form-group">
+              <label for="">Usuario</label>
+              <input
+                type="text"
+                class="form-control border-radius-input input"
+                placeholder="Usuario"
+                id="user-input"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Contraseña</label>
+              <input
+                type="password"
+                class="form-control border-radius-input input"
+                placeholder="Contraseña"
+                id="user-pass"
+              />
+            </div>
+            <div class="text-center">
+              <button class="btn btn-main btn-lg" id="btn-login-modal">
+                Login
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="commentModal"
+      tabindex="-1"
+      aria-labelledby="loginModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content p-5">
+          <div class="modal-body">
+            <h4
+              class="modal-title text-center font-weight-bold"
+              id="commentModalTitle"
+            >
+              Comentarios
+            </h4>
+            <div class="comment-list p-4" id="comment-list"></div>
+
+            <div class="form-group">
+              <label for="">Añade un comentario</label>
+              <textarea
+                id="comment-input"
+                class="form-control"
+                placeholder="Escribe un comentario"
+              ></textarea>
+            </div>
+            <div class="text-center" id="btn-comment-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="uploadModal"
+      tabindex="-1"
+      aria-labelledby="uploadModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content p-5">
+          <div class="modal-body">
+            <h4
+              class="modal-title text-center font-weight-bold"
+              id="uploadModalTitle"
+            >
+              Nuevo TikTok
+            </h4>
+            <div class="form-group">
+              <label for="">Video</label>
+              <select name="" id="select-video" class="custom-select">
+                <option value="0">Selecciona un video</option>
+                <option value="videos/1.mp4">Video 1</option>
+                <option value="videos/2.mp4">Video 2</option>
+                <option value="videos/3.mp4">Video 3</option>
+                <option value="videos/4.mp4">Video 4</option>
+                <option value="videos/5.mp4">Video 5</option>
+                <option value="videos/6.mp4">Video 6</option>
+                <option value="videos/7.mp4">Video 7</option>
+                <option value="videos/8.mp4">Video 8</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="">Hashtags</label>
+            <input
+              type="text"
+              class="form-control border-radius-input input"
+              placeholder="Hashtags"
+              id="hashtag-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Mensaje</label>
+            <input
+              type="text"
+              class="form-control border-radius-input input"
+              placeholder="Mensaje"
+              id="msg-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Titulo Canción</label>
+            <input
+              type="text"
+              class="form-control border-radius-input input"
+              placeholder="Titulo cancion"
+              id="title-input"
+            />
+            <div class="text-center">
+              <button
+                class="btn btn-main btn-lg mt-4"
+                type="button"
+                id="btn-upload-video"
+              >
+                Publicar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="createModal"
+      tabindex="-1"
+      aria-labelledby="createModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content p-5">
+          <div class="modal-body">
+            <h4
+              class="modal-title text-center font-weight-bold"
+              id="loginModalTitle"
+            >
+              Nueva cuenta
+            </h4>
+            <div class="form-group">
+              <label for="">Usuario</label>
+              <input
+                type="text"
+                class="form-control border-radius-input input"
+                placeholder="Usuario"
+                id="new-user"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Contraseña</label>
+              <input
+                type="password"
+                class="form-control border-radius-input input"
+                placeholder="Contraseña"
+                id="new-pass"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Confirmar contraseña</label>
+              <input
+                type="password"
+                class="form-control border-radius-input input"
+                placeholder="Contraseña"
+                id="new-confirm"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Imagen de perfil</label>
+              <ul class="d-flex">
+                <li
+                  class="profile-pic-form mr-3 rounded-circle"
+                  onclick="toggleActive(1)"
+                >
+                  <img
+                    width="60"
+                    class="rounded-circle pp-form"
+                    src="assets/profile-pics/picoro.jpg"
+                    alt=""
+                    id="profile-1"
+                  />
+                </li>
+
+                <li
+                  class="profile-pic-form mr-3 rounded-circle"
+                  onclick="toggleActive(2)"
+                 
+                >
+                  <img
+                    width="60"
+                    class="rounded-circle pp-form"
+                    src="assets/profile-pics/androide_18.jpg"
+                    alt=""
+                    id="profile-2"
+                  />
+                </li>
+
+                <li
+                  class="profile-pic-form mr-3 rounded-circle"
+                  onclick="toggleActive(3)"
+               
+                >
+                  <img
+                    width="60"
+                    class="rounded-circle pp-form"
+                    src="assets/profile-pics/baby.jpg"
+                    alt=""
+                    id="profile-3"
+                  />
+                </li>
+
+                <li
+                  class="profile-pic-form mr-3 rounded-circle"
+                  onclick="toggleActive(4)"
+                >
+                  <img
+                    width="60"
+                    class="rounded-circle pp-form"
+                    src="assets/profile-pics/chaozu.jpg"
+                    alt=""
+                    id="profile-4"
+                  />
+                </li>
+                <li
+                  class="profile-pic-form mr-3 rounded-circle"
+                  onclick="toggleActive(5)"
+                >
+                  <img
+                    width="60"
+                    class="rounded-circle pp-form"
+                    src="assets/profile-pics/patricio.jpg"
+                    alt=""
+                    id="profile-5"
+                  />
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-center mt-4">
+              <button class="btn btn-main btn-lg" id="btn-create-user">
+                Crear cuenta
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./js/controlador.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
